@@ -13,7 +13,21 @@ export const getItem = async (id: string) => {
 	return deserialize(id, item);
 };
 
-export const getItems = async (ids: string[]) => {};
+export const getItems = async (ids: string[]) => {
+	const commands = ids.map((x) => client.hGetAll(itemsKey(x)));
+
+	const results = await Promise.all(commands);
+
+	const items = results
+		.map((x, index) => {
+			if (Object.keys(x).length === 0) return null;
+
+			return deserialize(ids[index], x);
+		})
+		.filter((x) => x != null);
+
+	return items;
+};
 
 export const createItem = async (attrs: CreateItemAttrs, userId: string) => {
 	const id = genId();
