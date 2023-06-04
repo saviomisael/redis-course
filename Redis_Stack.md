@@ -12,3 +12,5 @@ Redis Stack includes some more modules:
 [https://redis.io/docs/stack/search/reference/stopwords/](https://redis.io/docs/stack/search/reference/stopwords/)
 
 [https://snowballstem.org/](https://snowballstem.org/)
+
+RediSearch use TF-IDF for searching

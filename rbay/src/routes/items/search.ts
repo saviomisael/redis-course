@@ -1,5 +1,5 @@
-import type { RequestHandler } from '@sveltejs/kit';
 import { searchItems } from '$services/queries/items';
+import type { RequestHandler } from '@sveltejs/kit';
 
 interface Params {
 	id: string;
